@@ -1,0 +1,1 @@
+l=a=>{s=a[0]||'',m=[],n=s.length;for(i=0;i<n;i++)for(j=i+1;j<=n;j++)a.every(b=>b.includes(x=s.slice(i,j)))&&m.push(x);console.log(m.sort((a,b)=>b.length-a.length)[0])};l(process.argv.slice(2))
