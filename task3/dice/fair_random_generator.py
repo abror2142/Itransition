@@ -27,7 +27,7 @@ class FairRandomGenerator:
 
         # Print info about hmac address
         print(f"I selected a random value in the range 0...{self.limit-1}")
-        print(f"(HMAC={self.hmac_value}).")
+        print(f"(HMAC={self.hmac_value.upper()}).")
 
         credentials = {
             "hmac": self.hmac_value,

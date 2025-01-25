@@ -5,12 +5,11 @@ from rich.console import Console
 class GetInput:
     console = Console()
 
-    def __init__(self, dices, data, baned_options=(), is_number=True):
-        self.command = ""
+    def __init__(self, dices, data, is_number=True):
+        self.command = None
         self.data = data
         self.is_number = is_number
         self.dices = dices
-        self.baned_options = baned_options
         self.options = [str(n) for n in range(self.data if is_number else len(self.data))]
 
     def __print_2d_array_options(self):
@@ -23,7 +22,8 @@ class GetInput:
                 sys_opt,
                 '-',
                 SystemInputOptions.INPUT_OPTIONS[sys_opt].capitalize(),
-                style="blue")
+                style="yellow"
+            )
 
     def __print_integer_options(self):
         for num in range(self.data):
@@ -38,7 +38,7 @@ class GetInput:
 
     @property
     def system_options(self):
-        opt = filter(lambda x:x not in self.baned_options, SystemInputOptions.INPUT_OPTIONS.keys())
+        opt = SystemInputOptions.INPUT_OPTIONS.keys()
         return list(opt)
 
     def __validate(self):
@@ -60,6 +60,6 @@ class GetInput:
 
     def get_command(self):
         self.__print_options()
-        self.command = input()
+        self.command = input('Your selection: ')
         self.__validate()
         return self.__execute()

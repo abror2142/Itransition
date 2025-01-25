@@ -9,7 +9,7 @@ class ProbabilityTable:
         self.dices = dices
 
     def print(self):
-        table = Table(title="Know your Probability!")
+        table = Table(title="Probability of the win fоr the user:", show_lines=True)
         table.add_column("User dice v")
 
         # Header of the table
@@ -22,7 +22,10 @@ class ProbabilityTable:
             for dice_b in self.dices:
                 probability = ProbabilityCalculation(dice_a, dice_b)
                 x = str(probability.calculate())
-                row.append(x)
+                if dice_a == dice_b:
+                    row.append('- ('+x+')')
+                else:
+                    row.append(x)
             table.add_row(",".join(dice_a),*row)
         console = Console()
         console.print(table)
